@@ -57,7 +57,7 @@
 								</div>
 							</div>
 							<div class="col-md-2">
-								<button type="submit" class="btn btn-primary">Submit Pledge</button>
+								<button type="submit" class="btn btn-secondary">Submit Pledge</button>
 							</div>
 						</div>
 					</form>	
@@ -66,15 +66,15 @@
 			</div>
 		</div>
 	</div>
-	<h2 class="text-center mt-5">These People Have Made the Pledge!</h2>
+<br>
 	<div class="row">
 		@foreach ($pledges as $pledge)
 			<div class="col-sm-6 col-md-4 col-lg-2 mb-2">
-				<div class="card bg-success" style="color:white;">
+				<div class="card" style="color:#202020;">
 					<div class="card-body">
-						<h3 class="card-title">{{ $pledge->name }}</h3>
+						<h3 class="card-title">{{ $pledge->name }} <span class="badge badge-success">{{ Carbon\Carbon::parse($pledge->date)->diffInDays(Carbon\Carbon::now()) }} days</span></h3>
 						<p class="card-text">Saving ${{ $pledge->savings }}</p>
-						<span class="text-muted" style="font-style:italic;">Pledged on {{ $pledge->date }}</span>
+						
 					</div>
 				</div>
 			</div>

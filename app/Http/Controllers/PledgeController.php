@@ -15,7 +15,7 @@ class PledgeController extends Controller
      */
     public function index()
     {
-        $pledges = Pledge::get();
+        $pledges = Pledge::orderBy('created_at','desc')->get();
         return view('welcome')->withPledges($pledges);
     }
 
