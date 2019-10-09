@@ -38,10 +38,10 @@ class PledgeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, array(
-            'name'      => 'required|max:255',
-            'email'	    => 'max:255',
-            'savings'   => 'required|max:255',
-            'date'      => 'required|max:255'
+            'name'      => 'required|alpha|max:255',
+            'email'	    => 'email|max:255',
+            'savings'   => 'required|numeric|max:255',
+            'date'      => 'required|date|max:255'
         ));
 
         $pledge = new Pledge;
