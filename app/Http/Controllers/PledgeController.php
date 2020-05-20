@@ -37,10 +37,11 @@ class PledgeController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, array(
             'name'      => 'required|alpha|max:255',
-            'email'	    => 'email|max:255',
-            'savings'   => 'required|numeric|max:255',
+            'email'	    => 'sometimes|nullable|email|max:255',
+            'savings'   => 'required|between:0,99.99',
             'date'      => 'required|date|max:255'
         ));
 
@@ -50,7 +51,7 @@ class PledgeController extends Controller
         $pledge->savings    = $request->savings;
         $pledge->date       = $request->date;
         $pledge->save();
-        
+
         Session::flash('success', 'Your pledge was saved, welcome to a healthier and richer you!');
         return redirect()->route('welcome');
     }
